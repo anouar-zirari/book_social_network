@@ -1,0 +1,32 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "baseName": "bookSocialNetwork",
+    "buildTool": "maven",
+    "cacheProvider": "no",
+    "clientFramework": "angular",
+    "clientTestFrameworks": [],
+    "clientTheme": "none",
+    "creationTimestamp": 1764242957488,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "enableHibernateCache": null,
+    "enableTranslation": false,
+    "entities": [],
+    "feignClient": null,
+    "jhipsterVersion": "8.11.0",
+    "jwtSecretKey": "ZDFkYzY5ZDVjNDE0NjQ1MWFmMDk5OTQwYTRkMzA0ZDBjZTZmNjUzOTIwNDYzNDM2MGM4MzgxOGFkNjBhNmFjNTRjZDllNzUyMTI5YjgwNTFmZDgxNjBjMWViMDhjNzUxOGViNWNmNGUxYzc0ZDU1NTE3NzBmNDNkYzNjYzBlYmY=",
+    "microfrontend": null,
+    "microfrontends": [],
+    "nativeLanguage": "en",
+    "packageName": "com.anwardev.booksocialnetwork",
+    "prodDatabaseType": "postgresql",
+    "reactive": false,
+    "serverPort": null,
+    "serviceDiscoveryType": null,
+    "syncUserWithIdp": null,
+    "testFrameworks": [],
+    "withAdminUi": false
+  }
+}
