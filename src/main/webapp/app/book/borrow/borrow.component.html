@@ -1,0 +1,94 @@
+<div class="container my-5">
+  <div class="d-flex justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-10">
+      <h1 data-cy="formTitle">Borrow a Book</h1>
+
+      @if (false) {
+        <div class="alert alert-danger" data-cy="formError"><strong>Error!</strong> Could not place the loan. Please try again.</div>
+      }
+
+      <form class="form" (ngSubmit)="borrowBook()" [formGroup]="borrowForm">
+        <div class="mb-3">
+          <label for="firstName" class="form-label">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            placeholder="Client First Name"
+            formControlName="firstName"
+            data-cy="firstName"
+          />
+
+          @let firstNameRef = borrowForm.get('firstName')!;
+          @if (firstNameRef.invalid && (firstNameRef.dirty || firstNameRef.touched)) {
+            <div>
+              @if (firstNameRef.errors?.['required']) {
+                <small class="form-text text-danger">First Name is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            placeholder="Client Last Name"
+            formControlName="lastName"
+            data-cy="lastName"
+          />
+
+          @let lastNameRef = borrowForm.get('lastName')!;
+          @if (lastNameRef.invalid && (lastNameRef.dirty || lastNameRef.touched)) {
+            <div>
+              @if (lastNameRef.errors?.['required']) {
+                <small class="form-text text-danger">Last Name is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label for="borrowDays" class="form-label">Borrowing Days</label>
+          <input
+            type="number"
+            class="form-control"
+            id="borrowDays"
+            placeholder="Number of days (Max 15)"
+            formControlName="borrowDays"
+            data-cy="borrowDays"
+            min="1"
+            max="15"
+          />
+
+          @let daysRef = borrowForm.get('borrowDays')!;
+          @if (daysRef.invalid && (daysRef.dirty || daysRef.touched)) {
+            <div>
+              @if (daysRef.errors?.['required']) {
+                <small class="form-text text-danger">The number of days is required.</small>
+              }
+              @if (daysRef.errors?.['min'] || daysRef.errors?.['max']) {
+                <small class="form-text text-danger">You must borrow the book for 1 to 15 days.</small>
+              }
+              @if (daysRef.errors?.['pattern'] || daysRef.errors?.['min'] || daysRef.errors?.['max']) {
+                <small class="form-text text-danger">Please enter a number between 1 and 15.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Calculated Return Date</label>
+          <p class="form-control-static text-primary fw-bold">
+            {{ returnDate }}
+          </p>
+          <small class="form-text text-muted">The book will be due on this date.</small>
+        </div>
+
+        <button type="submit" [disabled]="borrowForm.invalid" class="btn btn-primary" data-cy="submit">Confirm Borrowing</button>
+      </form>
+    </div>
+  </div>
+</div>
