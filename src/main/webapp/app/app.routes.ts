@@ -39,6 +39,10 @@ const routes: Routes = [
   },
   {
     path: 'book',
+    data: {
+      authorities: [Authority.ADMIN, Authority.USER],
+    },
+    canActivate: [UserRouteAccessService],
     loadChildren: () => import(`./book/book.routes`),
   },
   ...errorRoute,

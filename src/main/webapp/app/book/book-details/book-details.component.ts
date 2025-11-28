@@ -10,4 +10,5 @@ import SharedModule from 'app/shared/shared.module';
 })
 export class BookDetailsComponent {
   active = 1;
+  rating = 8;
 }

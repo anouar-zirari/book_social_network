@@ -1,0 +1,17 @@
+.hero {
+  height: 100vh;
+  background: url('https://picsum.photos/1920/1080?blur=3') center/cover no-repeat;
+}
+
+// Smooth Scroll
+html {
+  scroll-behavior: smooth;
+}
+
+// Carousel image styling
+.carousel {
+  img {
+    height: 300px;
+    object-fit: cover;
+  }
+}

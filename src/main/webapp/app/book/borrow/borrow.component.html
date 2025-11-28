@@ -87,7 +87,9 @@
           <small class="form-text text-muted">The book will be due on this date.</small>
         </div>
 
-        <button type="submit" [disabled]="borrowForm.invalid" class="btn btn-primary" data-cy="submit">Confirm Borrowing</button>
+        <button type="submit" [disabled]="borrowForm.invalid" class="btn btn-primary" data-cy="submit" (click)="generatePdf()">
+          Confirm Borrowing
+        </button>
       </form>
     </div>
   </div>

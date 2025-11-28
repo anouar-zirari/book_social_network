@@ -7,7 +7,7 @@ import { BorrowComponent } from './borrow/borrow.component';
 
 export const booksRoutes: Routes = [
   {
-    path: 'new-book',
+    path: 'new',
     component: NewBookComponent,
   },
   {

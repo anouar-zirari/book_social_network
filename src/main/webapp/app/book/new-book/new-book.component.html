@@ -10,15 +10,7 @@
       <form class="form" (ngSubmit)="create()" [formGroup]="bookCreation">
         <div class="mb-3">
           <label class="username-label" for="auther">Author</label>
-          <input
-            type="text"
-            class="form-control"
-            name="username"
-            id="username"
-            placeholder="Book Author"
-            formControlName="author"
-            data-cy="username"
-          />
+          <input type="text" class="form-control" placeholder="Book Author" formControlName="author" data-cy="author" />
           @let authorRef = bookCreation.get('author')!;
           @if (authorRef.invalid && (authorRef.dirty || authorRef.touched)) {
             <div>
@@ -34,6 +26,15 @@
                 <small class="form-text text-danger">This field can only contain letters, digits and e-mail addresses.</small>
               }
             </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label>About the</label>
+          <input type="text" class="form-control" placeholder="Book title" formControlName="authorDescription" data-cy="username" />
+          @let AuthorDescriptionRef = bookCreation.get('authorDescription')!;
+          @if (AuthorDescriptionRef.invalid) {
+            <small class="form-text text-danger">This field is required.</small>
           }
         </div>
 

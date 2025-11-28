@@ -1,0 +1,84 @@
+<!-- Hero Section -->
+<section class="hero text-white d-flex align-items-center">
+  <div class="container text-center">
+    <h1 class="display-4 fw-bold">Borrow Books Easily</h1>
+    <p class="lead">Explore, discover, and borrow books with just a click. Your digital library, always open.</p>
+    <a routerLink="/login" class="btn btn-warning btn-lg mt-3 fw-semibold"> Start Borrowing </a>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="container py-5">
+  <h2 class="text-center mb-4">Why Use Our Library?</h2>
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="p-4 shadow-sm text-center rounded">
+        <h4>Huge Collection</h4>
+        <p>Thousands of books across all genres.</p>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="p-4 shadow-sm text-center rounded">
+        <h4>Fast Borrowing</h4>
+        <p>Borrow and return books online in seconds.</p>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="p-4 shadow-sm text-center rounded">
+        <h4>Track Your Activity</h4>
+        <p>See borrowed books, return dates, and history.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Carousel Section: Book Categories -->
+<section class="bg-light py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Popular Categories</h2>
+
+    <ngb-carousel>
+      <ng-template ngbSlide>
+        <img src="https://picsum.photos/900/300?random=3" class="d-block w-100" />
+        <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
+          <h3>Science & Technology</h3>
+        </div>
+      </ng-template>
+
+      <ng-template ngbSlide>
+        <img src="https://picsum.photos/900/300?random=4" class="d-block w-100" />
+        <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
+          <h3>Novels & Literature</h3>
+        </div>
+      </ng-template>
+
+      <ng-template ngbSlide>
+        <img src="https://picsum.photos/900/300?random=5" class="d-block w-100" />
+        <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
+          <h3>History & Culture</h3>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+</section>
+
+<!-- Benefits -->
+<section class="container py-5">
+  <h2 class="text-center mb-4">Benefits of Joining</h2>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <div class="p-4 border rounded shadow-sm h-100">
+        <h5>No late fees</h5>
+        <p>All returns and renewals are handled online.</p>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <div class="p-4 border rounded shadow-sm h-100">
+        <h5>Always Available</h5>
+        <p>Access the library anywhere, anytime — 24/7.</p>
+      </div>
+    </div>
+  </div>
+</section>
