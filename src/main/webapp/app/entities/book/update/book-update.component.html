@@ -1,0 +1,186 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-book-heading" data-cy="BookCreateUpdateHeading">Create or edit a Book</h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_author">Author</label>
+          <input type="text" class="form-control" name="author" id="field_author" data-cy="author" formControlName="author" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_aboutAuthor">About Author</label>
+          <input
+            type="text"
+            class="form-control"
+            name="aboutAuthor"
+            id="field_aboutAuthor"
+            data-cy="aboutAuthor"
+            formControlName="aboutAuthor"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_title">Title</label>
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_category">Category</label>
+          <input type="text" class="form-control" name="category" id="field_category" data-cy="category" formControlName="category" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_publishDate">Publish Date</label>
+          <div class="input-group">
+            <input
+              id="field_publishDate"
+              data-cy="publishDate"
+              type="text"
+              class="form-control"
+              name="publishDate"
+              ngbDatepicker
+              #publishDateDp="ngbDatepicker"
+              formControlName="publishDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="publishDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_price">Price</label>
+          <input type="number" class="form-control" name="price" id="field_price" data-cy="price" formControlName="price" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_isbn">Isbn</label>
+          <input type="text" class="form-control" name="isbn" id="field_isbn" data-cy="isbn" formControlName="isbn" />
+        </div>
+
+        @let authorImageRef = editForm.get('authorImage')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_authorImage">Author Image</label>
+          <div>
+            @if (authorImageRef.value) {
+              <img
+                [src]="'data:' + editForm.get('authorImageContentType')!.value + ';base64,' + authorImageRef.value"
+                style="max-height: 100px"
+                alt="book"
+              />
+            }
+            @if (authorImageRef.value) {
+              <div class="form-text text-danger clearfix">
+                <span class="pull-start">{{ editForm.get('authorImageContentType')!.value }}, {{ byteSize(authorImageRef.value!) }}</span>
+                <button
+                  type="button"
+                  (click)="clearInputImage('authorImage', 'authorImageContentType', 'file_authorImage')"
+                  class="btn btn-secondary btn-xs pull-end"
+                >
+                  <fa-icon icon="times"></fa-icon>
+                </button>
+              </div>
+            }
+            <input
+              type="file"
+              id="file_authorImage"
+              data-cy="authorImage"
+              (change)="setFileData($event, 'authorImage', true)"
+              accept="image/*"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="authorImage"
+            id="field_authorImage"
+            data-cy="authorImage"
+            formControlName="authorImage"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="authorImageContentType"
+            id="field_authorImageContentType"
+            formControlName="authorImageContentType"
+          />
+        </div>
+
+        @let coverImageRef = editForm.get('coverImage')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_coverImage">Cover Image</label>
+          <div>
+            @if (coverImageRef.value) {
+              <img
+                [src]="'data:' + editForm.get('coverImageContentType')!.value + ';base64,' + coverImageRef.value"
+                style="max-height: 100px"
+                alt="book"
+              />
+            }
+            @if (coverImageRef.value) {
+              <div class="form-text text-danger clearfix">
+                <span class="pull-start">{{ editForm.get('coverImageContentType')!.value }}, {{ byteSize(coverImageRef.value!) }}</span>
+                <button
+                  type="button"
+                  (click)="clearInputImage('coverImage', 'coverImageContentType', 'file_coverImage')"
+                  class="btn btn-secondary btn-xs pull-end"
+                >
+                  <fa-icon icon="times"></fa-icon>
+                </button>
+              </div>
+            }
+            <input
+              type="file"
+              id="file_coverImage"
+              data-cy="coverImage"
+              (change)="setFileData($event, 'coverImage', true)"
+              accept="image/*"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="coverImage"
+            id="field_coverImage"
+            data-cy="coverImage"
+            formControlName="coverImage"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="coverImageContentType"
+            id="field_coverImageContentType"
+            formControlName="coverImageContentType"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

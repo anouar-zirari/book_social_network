@@ -1,0 +1,53 @@
+{
+  "annotations": {
+    "changelogDate": "20251129173856"
+  },
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "author",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "aboutAuthor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "category",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "publishDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "isbn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "authorImage",
+      "fieldType": "ImageBlob",
+      "fieldValidateRules": []
+    },
+    {
+      "fieldName": "coverImage",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Book",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

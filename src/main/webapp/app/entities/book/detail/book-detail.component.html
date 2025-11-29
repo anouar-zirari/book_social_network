@@ -1,0 +1,88 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (book(); as bookRef) {
+      <div>
+        <h2 data-cy="bookDetailsHeading"><span>Book</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ bookRef.id }}</span>
+          </dd>
+          <dt><span>Author</span></dt>
+          <dd>
+            <span>{{ bookRef.author }}</span>
+          </dd>
+          <dt><span>About Author</span></dt>
+          <dd>
+            <span>{{ bookRef.aboutAuthor }}</span>
+          </dd>
+          <dt><span>Title</span></dt>
+          <dd>
+            <span>{{ bookRef.title }}</span>
+          </dd>
+          <dt><span>Category</span></dt>
+          <dd>
+            <span>{{ bookRef.category }}</span>
+          </dd>
+          <dt><span>Publish Date</span></dt>
+          <dd>
+            <span>{{ bookRef.publishDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span>Price</span></dt>
+          <dd>
+            <span>{{ bookRef.price }}</span>
+          </dd>
+          <dt><span>Isbn</span></dt>
+          <dd>
+            <span>{{ bookRef.isbn }}</span>
+          </dd>
+          <dt><span>Author Image</span></dt>
+          <dd>
+            @if (bookRef.authorImage) {
+              <div>
+                <a (click)="openFile(bookRef.authorImage ?? '', bookRef.authorImageContentType)">
+                  <img
+                    [src]="'data:' + bookRef.authorImageContentType + ';base64,' + bookRef.authorImage"
+                    style="max-width: 100%"
+                    alt="book"
+                  />
+                </a>
+                {{ bookRef.authorImageContentType }}, {{ byteSize(bookRef.authorImage ?? '') }}
+              </div>
+            }
+          </dd>
+          <dt><span>Cover Image</span></dt>
+          <dd>
+            @if (bookRef.coverImage) {
+              <div>
+                <a (click)="openFile(bookRef.coverImage ?? '', bookRef.coverImageContentType)">
+                  <img
+                    [src]="'data:' + bookRef.coverImageContentType + ';base64,' + bookRef.coverImage"
+                    style="max-width: 100%"
+                    alt="book"
+                  />
+                </a>
+                {{ bookRef.coverImageContentType }}, {{ byteSize(bookRef.coverImage ?? '') }}
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/book', bookRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
