@@ -1,0 +1,40 @@
+{
+  "annotations": {
+    "changelogDate": "20251130055121"
+  },
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "opinion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rating",
+      "fieldType": "String"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Review",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "booktesting",
+      "otherEntityRelationshipName": "somthing",
+      "relationshipName": "manytoone",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "reviews",
+      "relationshipName": "user",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
